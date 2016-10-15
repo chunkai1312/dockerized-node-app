@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+
+  app:
+    container_name: app
+    build: ./app
+    restart: always
+    ports:
+      - "8080:8080"
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    volumes:
+      - ./mongo/data/db:/data/db
+    ports:
+      - "27017:27017"
+
+  redis:
+    container_name: redis
+    image: redis
+    restart: always    
+    volumes:
+      - ./redis/data:/data
+    ports:
+      - "6379:6379"
